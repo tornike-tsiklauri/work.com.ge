@@ -3633,11 +3633,7 @@ head.appendChild(script);
       </span>
     </b:if>
 
-    <b:if cond='data:olderPageUrl'>
-      <span id='blog-pager-older-link'>
-      <a class='blog-pager-older-link' expr:href='data:olderPageUrl' expr:id='data:widget.instanceId + &quot;_blog-pager-older-link&quot;' expr:title='data:olderPageTitle'><data:olderPageTitle/></a>
-      </span>
-    </b:if>
+
 
     <a class='home-link' expr:href='data:blog.homepageUrl'><data:homeMsg/></a>
 
