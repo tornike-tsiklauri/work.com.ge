@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE html>
-<html b:version='2' class='v2' expr:dir='data:blog.languageDirection' xmlns='http://www.w3.org/1999/xhtml' xmlns:b='http://www.google.com/2005/gml/b' xmlns:data='http://www.google.com/2005/gml/data' xmlns:expr='http://www.google.com/2005/gml/expr'><head><meta content='width=device-width, initial-scale=1.0' name='viewport'/><b:include data='blog' name='all-head-content'/><title><data:blog.pageTitle/></title> &lt;style type=&quot;text/css&quot;&gt; &lt;!-- /*<b:skin><![CDATA[
+<html b:version='2' class='v2' expr:dir='data:blog.languageDirection' xmlns='http://www.w3.org/1999/xhtml' xmlns:b='http://www.google.com/2005/gml/b' xmlns:data='http://www.google.com/2005/gml/data' xmlns:expr='http://www.google.com/2005/gml/expr'><head>,<meta content='width=device-width, initial-scale=1.0' name='viewport'/><b:include data='blog' name='all-head-content'/><title><data:blog.pageTitle/></title> &lt;style type=&quot;text/css&quot;&gt; &lt;!-- /*<b:skin><![CDATA[
 /* Existing Theme Base Styles */
 .column-left-outer {margin-left:0; }
 #ttr_content{float: left;}
@@ -37,6 +37,143 @@ table.gsc-search-box td {display: block;}
     .custom-search-form input[type="text"], .custom-search-form button { width: 100% !important; border-radius: 5px !important; }
     .custom-search-form button { margin-top: 10px !important; }
 }
+/* --- Hide the persistent 'Home' link --- */
+.home-link {
+    display: none !important; /* This forcefully hides any element with the class 'home-link' */
+}
+
+/* You can keep your other custom CSS below this, within the same b:skin block. */
+/* Example (do NOT duplicate if already there, just ensure it's present): */
+/*
+@media screen and (max-width: 768px) {
+    #nav-expander {
+        display: none !important;
+    }
+    .menu-center.collapse.navbar-collapse {
+        display: none !important;
+    }
+    body, p, a, li, span, div, td, h1, h2, h3, h4, h5, h6 {
+        font-size: 16px !important;
+        line-height: 1.6em !important;
+    }
+    img, iframe {
+        max-width: 100% !important;
+        height: auto !important;
+    }
+    .footer-content { flex-direction: column !important; align-items: center !important; }
+    .footer-links { flex-direction: column !important; gap: 0 !important; padding: 0 !important; }
+    .footer-links li { padding: 5px 0 !important; }
+    .copyright-text { font-size: 12px !important; color: #fff !important; margin: 0 !important; }
+    .custom-search-form form { flex-direction: column !important; width: 90% !important; }
+    .custom-search-form input[type="text"], .custom-search-form button { width: 100% !important; border-radius: 5px !important; }
+    .custom-search-form button { margin-top: 10px !important; }
+}
+*/
+/* --- Custom CSS for Popular Posts Widget --- */
+
+/* Target the main container of the Popular Posts widget */
+.PopularPosts {
+    /* You can add general styling here if needed */
+}
+
+/* Adjust Popular Posts Thumbnail Size */
+.PopularPosts .item-thumbnail img {
+    width: 78px !important;  /* Adjust this value for desired thumbnail width */
+    height: 78px !important; /* Adjust this value for desired thumbnail height */
+    object-fit: cover;       /* Ensures image covers the area without distortion */
+    border-radius: 5px;      /* Optional: Add rounded corners to thumbnails */
+}
+
+/* Adjust Popular Posts Title (Link) Text Size */
+.PopularPosts .item-title a {
+    font-size: 22px !important; /* Adjust this value for desired title font size */
+    line-height: 1.4 !important; /* Adjust line height for readability */
+    color: #333 !important;      /* Optional: Change title color */
+}
+
+/* Adjust Popular Posts Snippet/Summary Text Size (if snippets are shown) */
+.PopularPosts .item-snippet {
+    font-size: 14px !important; /* Adjust this value for desired snippet font size */
+    color: #666 !important;     /* Optional: Change snippet color */
+}
+
+/* Ensure the list items stack properly */
+.PopularPosts ul li {
+    display: flex; /* Use flexbox for alignment */
+    align-items: flex-start; /* Align items to the top */
+    margin-bottom: 18px !important; /* Spacing between posts */
+}
+
+.PopularPosts .item-content {
+    margin-left: 10px; /* Space between thumbnail and text */
+}
+
+
+/* --- Your existing custom CSS from previous steps (ensure it's still present) --- */
+/*
+.home-link { display: none !important; }
+@media screen and (max-width: 768px) {
+    #nav-expander { display: none !important; }
+    .menu-center.collapse.navbar-collapse { display: none !important; }
+    body, p, a, li, span, div, td, h1, h2, h3, h4, h5, h6 { font-size: 16px !important; line-height: 1.6em !important; }
+    img, iframe { max-width: 100% !important; height: auto !important; }
+    .footer-content { flex-direction: column !important; align-items: center !important; }
+    .footer-links { flex-direction: column !important; gap: 0 !important; padding: 0 !important; }
+    .footer-links li { padding: 5px 0 !important; }
+    .copyright-text { font-size: 18px !important; color: #fff !important; margin: 0 !important; }
+    .custom-search-form form { flex-direction: column !important; width: 90% !important; }
+    .custom-search-form input[type="text"], .custom-search-form button { width: 100% !important; border-radius: 5px !important; }
+    .custom-search-form button { margin-top: 10px !important; }
+}
+/* --- CSS Fix for Unclickable Page Links --- */
+
+/* Ensure the main menu container is on top and has proper flow */
+#ttr_menu_inner_in,
+#navigationmenu,
+.ttr_menu_element_alignment.container,
+.navbar-default.navbar-expand-md.navbar {
+    position: relative; /* Essential for z-index to work */
+    z-index: 1000 !important; /* Make sure these containers are high in stacking order */
+    overflow: visible !important; /* Prevent content from being clipped */
+}
+
+/* Ensure the menu items themselves are clickable */
+.ttr_menu_items.nav.navbar-nav li {
+    position: relative; /* For z-index to apply to individual list items */
+    z-index: 1001 !important; /* Higher than parent to ensure individual links are on top */
+}
+
+/* Make the actual menu links visible and clickable */
+.ttr_menu_items.nav.navbar-nav a {
+    display: block !important; /* Make the whole area clickable */
+    padding: 10px 15px !important; /* Give a good clickable area */
+    text-decoration: none !important;
+    color: #333 !important; /* Ensure text color is visible */
+    font-weight: bold;
+    pointer-events: auto !important; /* Crucial: Ensure clicks are registered */
+    position: relative; /* For z-index to apply directly to the link */
+    z-index: 1002 !important; /* Highest z-index for the clickable link */
+    background-color: transparent !important; /* Ensure no hidden background blocking clicks */
+}
+
+/* Add hover effect for visual feedback */
+.ttr_menu_items.nav.navbar-nav a:hover {
+    background-color: #eee !important; /* Light background on hover */
+    color: #000 !important; /* Darker text on hover */
+}
+
+/* Ensure the logo link is also clickable */
+.ttr_menu_logo a {
+    display: block !important;
+    position: relative;
+    z-index: 1003 !important; /* Make logo link even higher */
+    pointer-events: auto !important;
+}
+
+/* --- Your existing custom CSS from previous steps should also be here --- */
+/* (e.g., .home-link { display: none !important; }, mobile responsiveness, etc.) */
+
+*/
 ]]></b:skin>
 
 <style type='text/css'>/*! Bootstrap v4.1.3 (https://getbootstrap.com/) Copyright 2011-2018 The Bootstrap Authors Copyright 2011-2018 Twitter, Inc. Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE) */
@@ -3541,24 +3678,85 @@ $('body').toggleClass('nav-expanded');
 .search-status-message {
   display: none;
 }
-/* Custom Footer Styles */
-.site-footer {
-    background-color: #333;
-    color: #fff;
-    padding: 20px 0;
+ /* --- Footer Styling --- */
+  .site-footer {
+    background-color: #333; /* Dark background for the footer */
+    color: #fff; /* White text color */
+    padding: 30px 20px;
     text-align: center;
-}
+    font-family: &#39;Inter&#39;, sans-serif;
+  }
+
+  .footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column; /* Stack elements vertically by default */
+    align-items: center; /* Center items horizontally */
+  }
+
+  /* Styling for policy links container */
+  .footer-policy-links {
+    margin-bottom: 15px; /* Space above copyright text */
+  }
+
+  /* Styling for individual policy links */
+  .policy-link {
+    color: #fff;
+    text-decoration: none;
+    font-size: 10px;
+    margin: 0 8px; /* Space around links */
+    transition: color 0.3s ease;
+  }
+
+  .policy-link:hover {
+    color: #007bff; /* Highlight on hover */
+    text-decoration: underline;
+  }
+
+  /* Separator between policy links */
+  .policy-link-separator {
+    color: #ccc;
+    font-size: 10px;
+  }
+
+  .copyright-text {
+    font-size: 10px;
+    margin: 0; /* Remove default paragraph margin */
+    line-height: 1.5;
+  }
+
+  /* Responsive adjustments for mobile */
+  @media (max-width: 600px) {
+    .site-footer {
+      padding: 20px 15px;
+    }
+    .footer-policy-links {
+      flex-direction: column; /* Stack links vertically on small screens */
+      margin-bottom: 10px;
+    }
+    .policy-link {
+      margin: 5px 0; /* More vertical space on mobile */
+      font-size: 10px;
+    }
+    .policy-link-separator {
+      display: none; /* Hide separator when links are stacked */
+    }
+    .copyright-text {
+      font-size: 10px;
+    }
+  }
 
 .footer-content {
     display: flex;
-    flex-direction: column;
+    flex-direction: center;
     align-items: center;
     justify-content: center;
 }
 
 /* Styling for the copyright text */
 .copyright-text {
-  font-size: 14px !important; /* Forces the font size to change */
+  font-size: 12px !important; /* Forces the font size to change */
   color: #fff !important; /* Forces the color to change */
   margin: 0 !important; /* Forces the margin to be zero */
 }
@@ -3792,7 +3990,7 @@ h2.search-title {    /* Another common pattern */
     .footer-content { flex-direction: column !important; align-items: center !important; }
     .footer-links { flex-direction: column !important; gap: 0 !important; padding: 0 !important; }
     .footer-links li { padding: 5px 0 !important; }
-    .copyright-text { font-size: 18px !important; color: #fff !important; margin: 0 !important; }
+    .copyright-text { font-size: 10px !important; color: #fff !important; margin: 0 !important; }
     .custom-search-form form { flex-direction: column !important; width: 90% !important; }
     .custom-search-form input[type=&quot;text&quot;], .custom-search-form button { width: 100% !important; border-radius: 5px !important; }
     .custom-search-form button { margin-top: 10px !important; }
@@ -3846,9 +4044,28 @@ h2.search-title {    /* Another common pattern */
 
 </style>
   <link href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css' rel='stylesheet'/>
+  <!-- Open Graph Meta Tags for Social Media Sharing -->
+<meta expr:content='data:blog.title' property='og:site_name'/>
+<meta expr:content='data:blog.pageName' property='og:title'/>
+<b:if cond='data:blog.metaDescription'>
+  <meta expr:content='data:blog.metaDescription' property='og:description'/>
+<b:else/>
+  <meta expr:content='data:blog.title' property='og:description'/>
+</b:if>
+<meta expr:content='data:blog.url' property='og:url'/>
+<meta content='article' property='og:type'/>
+<b:if cond='data:blog.postImageThumbnailUrl'>
+  <meta expr:content='data:blog.postImageThumbnailUrl' property='og:image'/>
+<b:else/>
+  <!-- Fallback to a default image if no post thumbnail, replace with your logo URL -->
+  <meta content='https://res.cloudinary.com/dmxurw484/image/upload/t_90320/v1755247934/logo_c18mft.png' property='og:image'/>
+</b:if>
+<!-- You can add more, like og:locale or specific Twitter Card tags if needed -->
+
  
 </head>
-<body expr:class='&quot;loading&quot; + data:blog.mobileClass'><b:section class='navbar' id='navbar' maxwidgets='1' showaddelement='no'/><b:if cond='data:blog.pageType == &quot;index&quot;'><div itemscope='itemscope' itemtype='//schema.org/Blog' style='display: none;'><meta expr:content='data:blog.title' itemprop='name'/><b:if cond='data:blog.metaDescription'><meta expr:content='data:blog.metaDescription' itemprop='description'/></b:if></div></b:if><div class='totopshow'><a class='back-to-top' href='#'><img alt='Back to Top' src='https://cdn-icons-png.flaticon.com/32/18094/18094447.png'/></a></div><div class='body-fauxcolumns'><div class='fauxcolumn-outer body-fauxcolumn-outer'><div class='cap-top'><div class='cap-left'/><div class='cap-right'/></div><div class='fauxborder-left'><div class='fauxborder-right'/><div class='fauxborder-inner'/></div><div class='cap-bottom'><div class='cap-left'/><div class='cap-right'/></div></div></div><div class='content'><div class='content-fauxcolumns'><div class='fauxcolumn-outer content-fauxcolumn-outer'><div class='cap-top'><div class='cap-left'/><div class='cap-right'/></div><div class='fauxborder-left'><div class='fauxborder-right'/><div class='fauxborder-inner'/></div><div class='cap-bottom'><div class='cap-left'/><div class='cap-right'/></div></div></div><div class='content-outer'><div class='content-cap-top cap-top'><div class='cap-left'/><div class='cap-right'/></div><div class='fauxborder-left content-fauxborder-left'><div class='fauxborder-right content-fauxborder-right'/><div style='height:0px;width:0px;overflow:hidden;-webkit-margin-top-collapse: separate;'/><header id='ttr_header'><div style='height:0px;width:0px;overflow:hidden;-webkit-margin-top-collapse: separate;'/><div id='ttr_header_inner'><div class='header-outer'><div class='header-cap-top cap-top'><div class='cap-left'/><div class='cap-right'/></div><div class='fauxborder-left header-fauxborder-left'><div class='fauxborder-right header-fauxborder-right'/><div class='region-inner header-inner'><b:section class='header' id='header' maxwidgets='1' showaddelement='no'>
+        
+<body expr:class='&quot;loading&quot; + data:blog.mobileClass'><b:if cond='data:blog.pageType == &quot;index&quot;'><div itemscope='itemscope' itemtype='https://schema.org/Blog' style='display: none;'><meta expr:content='data:blog.title' itemprop='name'/><b:if cond='data:blog.metaDescription'><meta expr:content='data:blog.metaDescription' itemprop='description'/></b:if></div></b:if><div class='totopshow'><a class='back-to-top' href='#'><img alt='Back to Top' src='https://cdn-icons-png.flaticon.com/32/18094/18094447.png'/></a></div><div class='body-fauxcolumns'><div class='fauxcolumn-outer body-fauxcolumn-outer'><div class='cap-top'><div class='cap-left'/><div class='cap-right'/></div><div class='fauxborder-left'><div class='fauxborder-right'/><div class='fauxborder-inner'/></div><div class='cap-bottom'><div class='cap-left'/><div class='cap-right'/></div></div></div><div class='content'><div class='content-fauxcolumns'><div class='fauxcolumn-outer content-fauxcolumn-outer'><div class='cap-top'><div class='cap-left'/><div class='cap-right'/></div><div class='fauxborder-left'><div class='fauxborder-right'/><div class='fauxborder-inner'/></div><div class='cap-bottom'><div class='cap-left'/><div class='cap-right'/></div></div></div><div class='content-outer'><div class='content-cap-top cap-top'><div class='cap-left'/><div class='cap-right'/></div><div class='fauxborder-left content-fauxborder-left'><div class='fauxborder-right content-fauxborder-right'/><div style='height:0px;width:0px;overflow:hidden;-webkit-margin-top-collapse: separate;'/><header id='ttr_header'><div style='height:0px;width:0px;overflow:hidden;-webkit-margin-top-collapse: separate;'/><div id='ttr_header_inner'><div class='header-outer'><div class='header-cap-top cap-top'><div class='cap-left'/><div class='cap-right'/></div><div class='fauxborder-left header-fauxborder-left'><div class='fauxborder-right header-fauxborder-right'/><div class='region-inner header-inner'><b:section class='header' id='header' maxwidgets='1' showaddelement='yes'>
   <b:widget id='HTML3' locked='false' title='' type='HTML'>
     <b:widget-settings>
       <b:widget-setting name='content'><![CDATA[<div class="header-social-links">
@@ -3908,20 +4125,174 @@ h2.search-title {    /* Another common pattern */
 </b:includable>
   </b:widget>
 </b:section></div></div><div class='header-cap-bottom cap-bottom'><div class='cap-left'/><div class='cap-right'/></div></div></div></header><div style='height:0px;width:0px;overflow:hidden;-webkit-margin-top-collapse: separate;'/><div class='tabs-outer'><div class='tabs-cap-top cap-top'><div class='cap-left'/><div class='cap-right'/></div><div class='fauxborder-left tabs-fauxborder-left'><div class='fauxborder-right tabs-fauxborder-right'/><div class='region-inner tabs-inner'><b:section growth='horizontal' id='crosscol' maxwidgets='1' showaddelement='yes'>
-  <b:widget id='PageList1' locked='false' title='' type='PageList' version='1'>
+  <b:widget id='HTML5' locked='false' title='' type='HTML'>
     <b:widget-settings>
-      <b:widget-setting name='pageListJson'><![CDATA[{"link1":{"href":"","position":1,"title":"ისტორიები"},"link0":{"href":"http://cutom-blog-temp1237.blogspot.com/","position":0,"title":"მთავარი"},"link4":{"href":"","position":4,"title":"ფაქტები"},"link3":{"href":"","position":3,"title":"მითები"},"link2":{"href":"","position":2,"title":"რჩევები"}}]]></b:widget-setting>
-      <b:widget-setting name='homeTitle'>Home</b:widget-setting>
+      <b:widget-setting name='content'><![CDATA[<style>
+/* CSS for the Custom Page List Menu (Logo & Links) */
+.custom-page-list-menu {
+    background-color: #fff; /* Light background for the menu bar */
+    border-bottom: 1px solid #fff;
+    padding: 10px 20px; /* Padding around the entire menu bar */
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    z-index: 999; /* Ensure it's above most content */
+    position: relative; /* Needed for z-index to work */
+    overflow: visible; /* Prevents content from being clipped */
+}
+
+/* Flex container to hold logo and menu on the same line */
+.menu-content-wrapper {
+    display: flex;
+    justify-content: space-between; /* Pushes logo to left, menu to right */
+    align-items: center; /* Vertically centers logo and menu items */
+    max-width: 1200px; /* Max width for content, adjust as needed */
+    margin: 0 auto; /* Center the content wrapper */
+    padding: 0 15px; /* Inner padding for content */
+}
+
+/* Container for the logo */
+.custom-logo-container {
+    flex-shrink: 0; /* Prevents logo from shrinking */
+    margin-right: 20px; /* Space between logo and menu */
+}
+
+/* Styling for the logo link */
+.custom-logo-container .logo-link {
+    display: block; /* Make the whole image area clickable */
+    line-height: 0; /* Remove extra space below image inside the link */
+    text-decoration: none; /* No underline on the logo link */
+}
+
+/* Styling for the logo image */
+.custom-logo-container img {
+    max-width: 220px; /* Adjust this for your desired logo maximum width */
+    height: auto; /* Maintain aspect ratio */
+    display: block; /* Ensures no extra space below the image */
+    cursor: pointer; /* Indicates it's clickable */
+}
+
+/* Styling for the navigation links */
+.custom-nav-links {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex; /* Use flexbox for horizontal menu items */
+    flex-grow: 1; /* Allow menu to take available space */
+    justify-content: flex-end; /* Align links to the right */
+    flex-wrap: wrap; /* Allow links to wrap if screen is too narrow */
+}
+
+.custom-nav-links li {
+    margin-left: 15px; /* Spacing between menu items */
+}
+
+.custom-nav-links a {
+    display: block;
+    padding: 10px 15px;
+    text-decoration: none;
+    color: #333; /* Default link color */
+    font-weight: bold;
+    font-size: 16px;
+    transition: all 0.3s ease; /* Smooth transition for hover effects */
+    border-radius: 5px; /* Slightly rounded corners */
+}
+
+.custom-nav-links a:hover {
+    background-color: #e0e0e0; /* Light gray background on hover */
+    color: #000;
+}
+
+.custom-nav-links a:active {
+    background-color: #d0d0d0; /* Darker gray on active click */
+}
+
+/* Responsive adjustments for mobile */
+@media screen and (max-width: 768px) {
+    /* *** NEW: Hide the entire custom menu on mobile screens *** */
+    .custom-page-list-menu {
+        display: none !important; /* Hides the entire gadget on mobile */
+    }
+
+    /* The following rules for custom-page-list-menu, menu-content-wrapper,
+       custom-logo-container, custom-nav-links, li, and a are now effectively
+       not applied on mobile due to the 'display: none' above.
+       They are kept for completeness in case you decide to re-enable this menu
+       for mobile in the future with a different mobile layout logic. */
+    
+    /* .custom-page-list-menu {
+        padding: 5px 15px;
+    }
+
+    .menu-content-wrapper {
+        flex-direction: column;
+        align-items: center;
+        padding: 0;
+    }
+
+    .custom-logo-container {
+        margin-right: 0;
+        margin-bottom: 10px;
+        text-align: center;
+    }
+
+    .custom-logo-container img {
+        max-width: 100px;
+    }
+
+    .custom-nav-links {
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        margin-top: 10px;
+    }
+
+    .custom-nav-links li {
+        margin: 5px 0;
+        width: 100%;
+        text-align: center;
+    }
+
+    .custom-nav-links a {
+        padding: 12px 20px;
+        font-size: 18px;
+    } */
+}
+</style>
+
+<nav class="custom-page-list-menu">
+    <div class="menu-content-wrapper">
+        <div class="custom-logo-container">
+            <a href="https://work-com-ge.blogspot.com/" class="logo-link">
+                <img src='https://res.cloudinary.com/dmxurw484/image/upload/t_90320/v1755247934/logo_c18mft.png' alt="Blog Logo"/>
+            </a>
+        </div>
+        <ul class="custom-nav-links">
+            <!-- *** IMPORTANT: CUSTOMIZE YOUR LINKS HERE *** -->
+            <li><a href="https://work-com-ge.blogspot.com/">მთავარი</a></li>
+            <li><a href="https://work-com-ge.blogspot.com/p/about-us.html">ჩვენს შესახებ</a></li>
+            <li><a href="https://work-com-ge.blogspot.com/p/contact.html">კონტაქტი</a></li>
+            <!-- Add more links as needed -->
+            <!-- <li><a href="YOUR_LINK_URL_HERE">YOUR LINK TEXT</a></li> -->
+        </ul>
+    </div>
+</nav>
+
+<script>
+    // No specific JavaScript needed for this simple logo and links menu.
+</script>]]></b:widget-setting>
     </b:widget-settings>
-    <b:includable id='main'><div class='widget-content'><b:if cond='data:mobile'><select expr:id='data:widget.instanceId + &quot;_select&quot;'><b:loop values='data:links' var='link'><b:if cond='data:link.isCurrentPage'><option expr:value='data:link.href' selected='selected'><data:link.title/></option><b:else/><option expr:value='data:link.href'><data:link.title/></option></b:if></b:loop></select><span class='pagelist-arrow'>&amp;#9660;</span><b:else/><div id='ttr_menu'><div style='height:0px;width:0px;overflow:hidden;-webkit-margin-top-collapse: separate;'/><nav class='navbar-default navbar-expand-md navbar'><div id='ttr_menu_inner_in'><div id='navigationmenu'><div class='ttr_menu_element_alignment container'><div class='ttr_images_container'><div class='ttr_menu_logo'>
-  <a expr:href='data:blog.homepageUrl'>
-    <img src='https://res.cloudinary.com/dmxurw484/image/upload/t_90320/v1755247934/logo_c18mft.png'/>
-  </a>
-</div></div><div class='navbar-header'><button class='navbar-toggle' data-target='.navbar-collapse' data-toggle='collapse' id='nav-expander' type='button'><span class='ttr_menu_toggle_button'><span class='sr-only'/><span class='icon-bar'/><span class='icon-bar'/><span class='icon-bar'/></span><span class='ttr_menu_button_text'>Menu</span></button></div><div class='menu-center collapse navbar-collapse'><ul class='ttr_menu_items nav navbar-nav navbar-right'><b:loop values='data:links' var='link'><b:if cond='data:link.isCurrentPage'><li class='ttr_menu_items_parent dropdown active'><a class='ttr_menu_items_parent_link_active' expr:href='data:blog.homepageUrl'><span class='menuchildicon'/><data:link.title/></a><hr class='horiz_separator'/></li><b:else/><li class='ttr_menu_items_parent dropdown'><a class='ttr_menu_items_parent_link' expr:href='data:blog.homepageUrl'><span class='menuchildicon'/><data:link.title/></a><hr class='horiz_separator'/></li></b:if></b:loop></ul></div></div><div class='menuforeground'/></div></div></nav></div></b:if></div></b:includable>
-    <b:includable id='description'><span><data:description/></span></b:includable>
-    <b:includable id='title'><a expr:href='data:blog.homepageUrl'><data:title/></a></b:includable>
+    <b:includable id='main'>
+  <!-- only display title if it's non-empty -->
+  <b:if cond='data:title != &quot;&quot;'>
+    <h2 class='title'><data:title/></h2>
+  </b:if>
+  <div class='widget-content'>
+    <data:content/>
+  </div>
+
+  <b:include name='quickedit'/>
+</b:includable>
   </b:widget>
-</b:section><b:section class='tabs' growth='horizontal' id='crosscol-overflow' showaddelement='no'/></div></div><div class='tabs-cap-bottom cap-bottom'><div class='cap-left'/><div class='cap-right'/></div></div><div class='ttr_slideshow'><b:section class='slideshow' id='slideshow' maxwidgets='1' showaddelement='no'>
+</b:section><b:section class='tabs' growth='horizontal' id='crosscol-overflow' showaddelement='yes'/></div></div><div class='tabs-cap-bottom cap-bottom'><div class='cap-left'/><div class='cap-right'/></div></div><div class='ttr_slideshow'><b:section class='slideshow' id='slideshow' maxwidgets='1' showaddelement='yes'>
   <b:widget id='HTML1' locked='false' title='ttr_slideshow' type='HTML' version='1'>
     <b:widget-settings>
       <b:widget-setting name='content'/>
@@ -4089,7 +4460,24 @@ h2.search-title {    /* Another common pattern */
   </div>
   <div class='clear'/>
 </b:includable>
-  <b:includable id='post' var='post'><div class='ttr_post_content_inner'><a expr:name='data:post.id'/><b:if cond='data:post.title'><div class='ttr_post_inner_box'><h1 class='ttr_post_title'><b:if cond='data:post.link'><a expr:href='data:post.link'><data:post.title/></a><b:else/><b:if cond='data:post.url'><b:if cond='data:blog.url != data:post.url'><a expr:href='data:post.url'><data:post.title/></a><b:else/><data:post.title/></b:if><b:else/><data:post.title/></b:if></b:if></h1></div></b:if><div class='ttr_article grid'><b:if cond='data:post.dateHeader'><div class='postedon'><span class='meta'>Posted on </span><a><data:post.dateHeader/></a></div></b:if><div class='post-header'><div class='post-header-line-1'/></div><b:if cond='data:blog.metaDescription == &quot;&quot;'><div class='post-body entry-content postcontent' expr:id='&quot;post-body-&quot; + data:post.id' itemprop='description articleBody'><data:post.body/><div style='clear: both;'/></div><b:else/><div class='post-body entry-content' expr:id='&quot;post-body-&quot; + data:post.id' itemprop='articleBody'><data:post.body/><div style='clear: both;'/></div></b:if><b:if cond='data:post.hasJumpLink'><div class='jump-link'><a expr:href='data:post.url + &quot;#more&quot;' expr:title='data:post.title'><data:post.jumpText/></a></div></b:if><div class='post-footer'><div class='post-footer-line post-footer-line-1'><div class='postedon' style='clear:both'><span class='meta'><b:if cond='data:top.showAuthor'><data:top.authorLabel/><b:if cond='data:post.authorProfileUrl'><img alt=' Author' src='https://photos.work.com.ge/javm6h.png'/><span class='fn' itemprop='author' itemscope='itemscope' itemtype='//schema.org/Person'><meta expr:content='data:post.authorProfileUrl' itemprop='url'/><a class='g-profile' expr:href='data:post.authorProfileUrl' rel='author' title='author profile'>  <span itemprop='name'><data:post.author/></span></a></span><b:else/><span class='fn' itemprop='author' itemscope='itemscope' itemtype='//schema.org/Person'>  <span itemprop='name'><data:post.author/></span></span></b:if></b:if></span><span class='meta-sep'>  </span><span class='meta'><b:if cond='data:top.showTimestamp'><data:top.timestampLabel/><b:if cond='data:post.url'><meta expr:content='data:post.canonicalUrl' itemprop='url'/><a class='timestamp-link' expr:href='data:post.url' rel='bookmark' title='permanent link'>  <abbr class='published' expr:title='data:post.timestampISO8601' itemprop='datePublished'><data:post.timestamp/></abbr></a></b:if></b:if></span><span class='meta-sep'>  </span><span class='post-comment-link'><b:if cond='data:blog.pageType != &quot;item&quot;'><b:if cond='data:blog.pageType != &quot;static_page&quot;'><b:if cond='data:post.allowComments'><b:include data='post' name='comment_count_picker'/></b:if></b:if></b:if></span><span class='meta-sep'>  </span><span class='post-icons'><b:if cond='data:post.emailPostUrl'><span class='item-action'><a expr:href='data:post.emailPostUrl' expr:title='data:top.emailPostMsg'><img alt='Email' class='icon-action' height='13' src='//img1.blogblog.com/img/icon18_email.gif' width='18'/></a></span></b:if><b:include data='post' name='postQuickEdit'/></span></div></div><div class='post-share-buttons goog-inline-block'><b:if cond='data:post.sharePostUrl'><b:include data='post' name='shareButtons'/></b:if></div><div class='post-footer-line post-footer-line-3'><div class='postedon' style='clear:both'><span class='reaction-buttons'><b:if cond='data:top.showReactions'><table border='0' cellpadding='0' width='100%'><tr><td class='reactions-label-cell' nowrap='nowrap' valign='top' width='1%'><span class='reactions-label'><data:top.reactionsLabel/></span>&#160;</td><td><iframe allowtransparency='true' class='reactions-iframe' expr:src='data:post.reactionsUrl' frameborder='0' name='reactions' scrolling='no'/></td></tr></table></b:if></span></div></div><b:if cond='data:post.authorAboutMe'><div class='author-profile' itemprop='author' itemscope='itemscope' itemtype='//schema.org/Person'><b:if cond='data:post.authorPhoto.url'><img expr:src='data:post.authorPhoto.url' itemprop='image' width='50px'/></b:if><div><a class='g-profile' expr:href='data:post.authorProfileUrl' itemprop='url' rel='author' title='author profile'>  <span itemprop='name'><data:post.author/></span></a></div><span itemprop='description'><data:post.authorAboutMe/></span></div></b:if></div></div></div></b:includable>
+  <b:includable id='post' var='post'><!-- Open Graph Meta Tags for Social Media Sharing -->
+<meta expr:content='data:blog.title' property='og:site_name'/>
+<meta expr:content='data:blog.pageName' property='og:title'/>
+<b:if cond='data:blog.metaDescription'>
+  <meta expr:content='data:blog.metaDescription' property='og:description'/>
+<b:else/>
+  <meta expr:content='data:blog.title' property='og:description'/>
+</b:if>
+<meta expr:content='data:blog.url' property='og:url'/>
+<meta content='article' property='og:type'/>
+<b:if cond='data:blog.postImageThumbnailUrl'>
+  <meta expr:content='data:blog.postImageThumbnailUrl' property='og:image'/>
+<b:else/>
+  <!-- Fallback to a default image if no post thumbnail, replace with your logo URL -->
+  <meta content='https://res.cloudinary.com/dmxurw484/image/upload/t_90320/v1755247934/logo_c18mft.png' property='og:image'/>
+</b:if>
+<!-- You can add more, like og:locale or specific Twitter Card tags if needed -->
+<div class='ttr_post_content_inner'><a expr:name='data:post.id'/><b:if cond='data:post.title'><div class='ttr_post_inner_box'><h1 class='ttr_post_title'><b:if cond='data:post.link'><a expr:href='data:post.link'><data:post.title/></a><b:else/><b:if cond='data:post.url'><b:if cond='data:blog.url != data:post.url'><a expr:href='data:post.url'><data:post.title/></a><b:else/><data:post.title/></b:if><b:else/><data:post.title/></b:if></b:if></h1></div></b:if><div class='ttr_article grid'><b:if cond='data:post.dateHeader'><div class='postedon'><span class='meta'>Posted on </span><a><data:post.dateHeader/></a></div></b:if><div class='post-header'><div class='post-header-line-1'/></div><b:if cond='data:blog.metaDescription == &quot;&quot;'><div class='post-body entry-content postcontent' expr:id='&quot;post-body-&quot; + data:post.id' itemprop='description articleBody'><data:post.body/><div style='clear: both;'/></div><b:else/><div class='post-body entry-content' expr:id='&quot;post-body-&quot; + data:post.id' itemprop='articleBody'><data:post.body/><div style='clear: both;'/></div></b:if><b:if cond='data:post.hasJumpLink'><div class='jump-link'><a expr:href='data:post.url + &quot;#more&quot;' expr:title='data:post.title'><data:post.jumpText/></a></div></b:if><div class='post-footer'><div class='post-footer-line post-footer-line-1'><div class='postedon' style='clear:both'><span class='meta'><b:if cond='data:top.showAuthor'><data:top.authorLabel/><b:if cond='data:post.authorProfileUrl'><img alt=' Author' src='https://photos.work.com.ge/javm6h.png'/><span class='fn' itemprop='author' itemscope='itemscope' itemtype='//schema.org/Person'><meta expr:content='data:post.authorProfileUrl' itemprop='url'/><a class='g-profile' expr:href='data:post.authorProfileUrl' rel='author' title='author profile'>  <span itemprop='name'><data:post.author/></span></a></span><b:else/><span class='fn' itemprop='author' itemscope='itemscope' itemtype='//schema.org/Person'>  <span itemprop='name'><data:post.author/></span></span></b:if></b:if></span><span class='meta-sep'>  </span><span class='meta'><b:if cond='data:top.showTimestamp'><data:top.timestampLabel/><b:if cond='data:post.url'><meta expr:content='data:post.canonicalUrl' itemprop='url'/><a class='timestamp-link' expr:href='data:post.url' rel='bookmark' title='permanent link'>  <abbr class='published' expr:title='data:post.timestampISO8601' itemprop='datePublished'><data:post.timestamp/></abbr></a></b:if></b:if></span><span class='meta-sep'>  </span><span class='post-comment-link'><b:if cond='data:blog.pageType != &quot;item&quot;'><b:if cond='data:blog.pageType != &quot;static_page&quot;'><b:if cond='data:post.allowComments'><b:include data='post' name='comment_count_picker'/></b:if></b:if></b:if></span><span class='meta-sep'>  </span><span class='post-icons'><b:if cond='data:post.emailPostUrl'><span class='item-action'><a expr:href='data:post.emailPostUrl' expr:title='data:top.emailPostMsg'><img alt='Email' class='icon-action' height='13' src='//img1.blogblog.com/img/icon18_email.gif' width='18'/></a></span></b:if><b:include data='post' name='postQuickEdit'/></span></div></div><div class='post-share-buttons goog-inline-block'><b:if cond='data:post.sharePostUrl'><b:include data='post' name='shareButtons'/></b:if></div><div class='post-footer-line post-footer-line-3'><div class='postedon' style='clear:both'><span class='reaction-buttons'><b:if cond='data:top.showReactions'><table border='0' cellpadding='0' width='100%'><tr><td class='reactions-label-cell' nowrap='nowrap' valign='top' width='1%'><span class='reactions-label'><data:top.reactionsLabel/></span>&#160;</td><td><iframe allowtransparency='true' class='reactions-iframe' expr:src='data:post.reactionsUrl' frameborder='0' name='reactions' scrolling='no'/></td></tr></table></b:if></span></div></div><b:if cond='data:post.authorAboutMe'><div class='author-profile' itemprop='author' itemscope='itemscope' itemtype='//schema.org/Person'><b:if cond='data:post.authorPhoto.url'><img expr:src='data:post.authorPhoto.url' itemprop='image' width='50px'/></b:if><div><a class='g-profile' expr:href='data:post.authorProfileUrl' itemprop='url' rel='author' title='author profile'>  <span itemprop='name'><data:post.author/></span></a></div><span itemprop='description'><data:post.authorAboutMe/></span></div></b:if></div></div></div></b:includable>
   <b:includable id='postQuickEdit' var='post'><b:if cond='data:post.editUrl'><span expr:class='&quot;item-control &quot; + data:post.adminClass'><a expr:href='data:post.editUrl' expr:title='data:top.editPostMsg'><img alt='' class='icon-action' height='18' src='//img2.blogblog.com/img/icon18_edit_allbkg.gif' width='18'/></a></span></b:if></b:includable>
   <b:includable id='shareButtons' var='post'><b:if cond='data:top.showEmailButton'><a class='goog-inline-block share-button sb-email' expr:href='data:post.sharePostUrl + &quot;&amp;target=email&quot;' expr:title='data:top.emailThisMsg' target='_blank'><span class='share-button-link-text'><data:top.emailThisMsg/></span></a></b:if><b:if cond='data:top.showBlogThisButton'><a class='goog-inline-block share-button sb-blog' expr:href='data:post.sharePostUrl + &quot;&amp;target=blog&quot;' expr:onclick='&quot;window.open(this.href, \&quot;_blank\&quot;, \&quot;height=270,width=475\&quot;); return false;&quot;' expr:title='data:top.blogThisMsg' target='_blank'><span class='share-button-link-text'><data:top.blogThisMsg/></span></a></b:if><b:if cond='data:top.showTwitterButton'><a class='goog-inline-block share-button sb-twitter' expr:href='data:post.sharePostUrl + &quot;&amp;target=twitter&quot;' expr:title='data:top.shareToTwitterMsg' target='_blank'><span class='share-button-link-text'><data:top.shareToTwitterMsg/></span></a></b:if><b:if cond='data:top.showFacebookButton'><a class='goog-inline-block share-button sb-facebook' expr:href='data:post.sharePostUrl + &quot;&amp;target=facebook&quot;' expr:onclick='&quot;window.open(this.href, \&quot;_blank\&quot;, \&quot;height=430,width=640\&quot;); return false;&quot;' expr:title='data:top.shareToFacebookMsg' target='_blank'><span class='share-button-link-text'><data:top.shareToFacebookMsg/></span></a></b:if><b:if cond='data:top.showOrkutButton'><a class='goog-inline-block share-button sb-orkut' expr:href='data:post.sharePostUrl + &quot;&amp;target=orkut&quot;' expr:title='data:top.shareToOrkutMsg' target='_blank'><span class='share-button-link-text'><data:top.shareToOrkutMsg/></span></a></b:if><b:if cond='data:top.showPinterestButton'><a class='goog-inline-block share-button sb-pinterest' expr:href='data:post.sharePostUrl + &quot;&amp;target=pinterest&quot;' expr:title='data:top.shareToPinterestMsg' target='_blank'><span class='share-button-link-text'><data:top.shareToPinterestMsg/></span></a></b:if><b:if cond='data:top.showDummy'><div class='goog-inline-block dummy-container'><data:post.dummyTag/></div></b:if></b:includable>
   <b:includable id='status-message'><b:if cond='data:navMessage'><div class='status-msg-wrap'><div class='status-msg-body'><b:if cond='data:blog.searchQuery'>
@@ -4109,12 +4497,250 @@ h2.search-title {    /* Another common pattern */
   <b:includable id='threaded_comment_js' var='post'><script async='async' expr:src='data:post.commentSrc' type='text/javascript'/><script type='text/javascript'> (function() {var items = <data:post.commentJso/>var msgs = <data:post.commentMsgs/>var items = <data:post.commentConfig/><![CDATA[var cursor = null;  if (items && items.length > 0) { cursor = parseInt(items[items.length - 1].timestamp) + 1; } var bodyFromEntry = function(entry) { if (entry.gd$extendedProperty) { for (var k in entry.gd$extendedProperty) { if (entry.gd$extendedProperty[k].name == 'blogger.contentRemoved') { return '<span class="deleted-comment">' + entry.content.$t + '</span>'; } } }  return entry.content.$t; } var parse = function(data) { cursor = null; var comments = []; if (data && data.feed && data.feed.entry) { for (var i = 0, entry; entry = data.feed.entry[i]; i++) { var comment = {};  var id = /blog-(/d+).post-(/d+)/.exec(entry.id.$t); comment.id = id ? id[2] : null;  comment.body = bodyFromEntry(entry); comment.timestamp = Date.parse(entry.published.$t) + ''; if (entry.author && entry.author.constructor === Array) {  var auth = entry.author[0]; if (auth) { comment.author = { name: (auth.name ? auth.name.$t : undefined), profileUrl: (auth.uri ? auth.uri.$t : undefined), avatarUrl: (auth.gd$image ? auth.gd$image.src : undefined) }; } } if (entry.link) {  if (entry.link[2]) { comment.link = comment.permalink = entry.link[2].href; } if (entry.link[3]) { var pid = /.*comments/\default\/(/d+)/?.*/.exec(entry.link[3].href);  if (pid && pid[1]) { comment.parentId = pid[1]; } } }  comment.deleteclass = 'item-control blog-admin'; if (entry.gd$extendedProperty) { for (var k in entry.gd$extendedProperty) { if (entry.gd$extendedProperty[k].name == 'blogger.itemClass') { comment.deleteclass += ' ' + entry.gd$extendedProperty[k].value; } else if (entry.gd$extendedProperty[k].name == 'blogger.displayTime') {  comment.displayTime = entry.gd$extendedProperty[k].value; } } }   comments.push(comment); } }  return comments;  };  var paginator = function(callback) {  if (hasMore()) { var url = config.feed + '?alt=json&v=2&orderby=published&reverse=false&max-results=50'; if (cursor) {  url += '&published-min=' + new Date(cursor).toISOString(); } window.bloggercomments = function(data) { var parsed = parse(data); cursor = parsed.length < 50 ? null : parseInt(parsed[parsed.length - 1].timestamp) + 1 callback(parsed); window.bloggercomments = null; }  url += '&callback=bloggercomments'; var script = document.createElement('script'); script.type = 'text/javascript'; script.src = url; document.getElementsByTagName('head')[0].appendChild(script); } }; var hasMore = function() { return !!cursor; }; var getMeta = function(key, comment) { if ('iswriter' == key) { var matches = !!comment.author && comment.author.name == config.authorName && comment.author.profileUrl == config.authorUrl;  return matches ? 'true' : ''; } else if ('deletelink' == key) { return config.baseUri + '/delete-comment.g?blogID=' + config.blogId + '&postID=' + comment.id; } else if ('deleteclass' == key) { return comment.deleteclass; }  return ''; };  var replybox = null;  var replyUrlParts = null; var replyParent = undefined; var onReply = function(commentId, domId) { if (replybox == null) { replybox = document.getElementById('comment-editor'); if (replybox != null) { replybox.height = '250px'; replybox.style.display = 'block';  replyUrlParts = replybox.src.split('#'); } } if (replybox && (commentId !== replyParent)) { document.getElementById(domId).insertBefore(replybox, null); replybox.src = replyUrlParts[0]  + (commentId ? '&parentID=' + commentId : '')  + '#' + replyUrlParts[1];  replyParent = commentId; } }; var hash = (window.location.hash || '#').substring(1); var startThread, targetComment;  if (/^comment-form_/.test(hash)) { startThread = hash.substring('comment-form_'.length); } else if (/^c[0-9]+$/.test(hash)) { targetComment = hash.substring(1); }   var configJso = { 'maxDepth': config.maxThreadDepth }; var provider = { 'id': config.postId, 'data': items, 'loadNext': paginator, 'hasMore': hasMore, 'getMeta': getMeta, 'onReply': onReply,'rendered': true, 'initComment': targetComment, 'initReplyThread': startThread, 'config': configJso, 'messages': msgs };  var render = function() { if (window.goog && window.goog.comments) { var holder = document.getElementById('comment-holder'); window.goog.comments.render(holder, provider); } };  if (window.goog && window.goog.comments) {  render(); } else {  window.goog = window.goog || {}; window.goog.comments = window.goog.comments || {};  window.goog.comments.loadQueue = window.goog.comments.loadQueue || []; window.goog.comments.loadQueue.push(render); } })(); \ ]]></script></b:includable>
   <b:includable id='threaded_comments' var='post'><div class='comments' id='comments'><a name='comments'/><h4><data:post.commentLabelFull/>:</h4><div class='comments-content'><b:if cond='data:post.embedCommentForm'><b:include data='post' name='threaded_comment_js'/></b:if><div id='comment-holder'><data:post.commentHtml/></div></div><p class='comment-footer'><b:if cond='data:post.allowNewComments'><b:include data='post' name='threaded-comment-form'/><b:else/><data:post.noNewCommentsText/></b:if></p><b:if cond='data:showCmtPopup'><div id='comment-popup'><iframe allowtransparency='true' frameborder='0' id='comment-actions' name='comment-actions' scrolling='no'/></div></b:if><div id='backlinks-container'><div expr:id='data:widget.instanceId + &quot;_backlinks-container&quot;'><b:if cond='data:post.showBacklinks'><b:include data='post' name='backlinks'/></b:if></div></div></div></b:includable>
 </b:widget>
-<b:widget id='PopularPosts1' locked='false' title='ასევე საინტერესოა' type='PopularPosts'>
+<b:widget id='HTML6' locked='false' title='' type='HTML'>
   <b:widget-settings>
-    <b:widget-setting name='numItemsToShow'>10</b:widget-setting>
+    <b:widget-setting name='content'><![CDATA[<ul class="custom-nav-links">
+    <!-- UX-მეგობრული კატეგორიები -->
+    <li><a href='https://work.com.ge/category/stories.html'>ისტორიები</a></li>
+    <li><a href='https://work.com.ge/category/tips.html'>რჩევები</a></li>
+    <li><a href='https://work.com.ge/category/myths.html'>მითები</a></li>
+    <li><a href='https://work.com.ge/category/facts.html'>ფაქტები</a></li>
+    <!-- დაამატეთ მეტი კატეგორია საჭიროების შემთხვევაში -->
+</ul>
+
+<style>
+/* CSS for the custom category links */
+.custom-nav-links {
+    list-style: none; /* Remove bullet points */
+    padding: 0;
+    margin: 20px 0; /* Add some vertical spacing */
+    display: flex; /* Arrange links horizontally */
+    flex-wrap: wrap; /* Allow wrapping on smaller screens */
+    justify-content: center; /* Center the links */
+    gap: 15px; /* Space between links */
+    font-family: 'Inter', sans-serif;
+}
+
+.custom-nav-links li a {
+    display: block;
+    padding: 10px 20px;
+    background-color: #f0f0f0; /* Light background for buttons */
+    color: #333 !important; /* Dark text for contrast */
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: 500;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    white-space: nowrap; /* Prevent text from breaking into multiple lines */
+}
+
+.custom-nav-links li a:hover {
+    background-color: #e0e0e0; /* Slightly darker on hover */
+    color: #0066cc !important; /* Blue text on hover */
+}
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 600px) {
+    .custom-nav-links {
+        flex-direction: column; /* Stack links vertically on small screens */
+        align-items: center; /* Center stacked links */
+        gap: 10px; /* Adjust gap */
+    }
+    .custom-nav-links li a {
+        width: 100%; /* Make links take full width */
+        text-align: center;
+        padding: 12px 15px; /* Adjust padding for mobile */
+        font-size: 15px;
+    }
+}
+</style>
+
+<style>
+  /* Custom Posts Widget Styling */
+  .custom-posts-widget {
+    font-family: 'Inter', sans-serif;
+    background-color: #ffffff;
+    border: 1px solid #e0e0e0;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 30px; /* Space below the widget */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  }
+
+  .custom-posts-widget h2 {
+    font-size: 24px;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 20px;
+    text-align: center;
+    border-bottom: 2px solid #f0f0f0;
+    padding-bottom: 10px;
+  }
+
+  .custom-post-item {
+    display: flex;
+    align-items: flex-start; /* Align items to the top */
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+    border-bottom: 1px dashed #f5f5f5; /* Dashed separator */
+  }
+
+  .custom-post-item:last-child {
+    border-bottom: none; /* No border for the last item */
+    margin-bottom: 0;
+    padding-bottom: 0;
+  }
+
+  .custom-post-thumbnail {
+    flex-shrink: 0; /* Prevents thumbnail from shrinking */
+    width: 80px; /* Desired thumbnail width */
+    height: 80px; /* Desired thumbnail height */
+    border-radius: 8px; /* Rounded corners for thumbnail */
+    overflow: hidden; /* Hide overflowing parts of the image */
+    margin-right: 15px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  }
+
+  .custom-post-thumbnail img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensures the image covers the area without distortion */
+    display: block;
+  }
+
+  .custom-post-content {
+    flex-grow: 1; /* Allow content to take up remaining space */
+  }
+
+  .custom-post-title a {
+    font-size: 18px;
+    font-weight: 600;
+    color: #0066cc !important; /* Contrast-friendly blue link color - NOW WITH !important */
+    text-decoration: none;
+    line-height: 1.3;
+    display: block; /* Make entire title area clickable */
+    margin-bottom: 5px;
+  }
+
+  .custom-post-title a:hover {
+    color: #004d99; /* Darker blue on hover */
+    text-decoration: underline;
+  }
+
+  .custom-post-snippet {
+    font-size: 14px;
+    color: #666;
+    line-height: 1.5;
+  }
+
+  /* .custom-post-readmore is removed as per request */
+  /* .custom-post-readmore {
+    font-size: 13px;
+    font-weight: 500;
+    color: #0066cc !important;
+    text-decoration: none;
+    margin-top: 5px;
+    display: inline-block;
+  }
+
+  .custom-post-readmore:hover {
+    text-decoration: underline;
+  } */
+
+  /* Responsive adjustments */
+  @media (max-width: 600px) {
+    .custom-posts-widget {
+      padding: 15px;
+    }
+    .custom-posts-widget h2 {
+      font-size: 20px;
+    }
+    .custom-post-item {
+      flex-direction: column; /* Stack on small screens */
+      align-items: center;
+      text-align: center;
+    }
+    .custom-post-thumbnail {
+      margin-right: 0;
+      margin-bottom: 10px;
+    }
+    .custom-post-title a {
+      font-size: 16px;
+    }
+    .custom-post-snippet {
+      font-size: 13px;
+    }
+  }
+</style>
+
+<div class="custom-posts-widget">
+  <h2>გამორჩეული პოსტები</h2>
+  <div class="custom-post-list">
+    <!-- Post 1: 12 ფაქტი რომელიც ძალიან ცოტამ იცის HR-ების შესახებ (დამსაქმებლების შესახებ) -->
+    <div class="custom-post-item">
+      <div class="custom-post-thumbnail">
+        <img src="https://blogger.googleusercontent.com/img/a/AVvXsEhmUTI-fdEpqYNrM1X-M3QtOprMIO_7W1YRUEimbJjiI_JysphvMHYAxn6QU8_isq0aiPRhShQDHoNssjuKz7h9tDSs2obQOnHPMogX1FS6TqKXuJqyKFWVf6XHhnYM-wo5bAG43_CYK_K4Iy6CoABOoMYkbZAm97Mu3PGGIL2CaNCPGUgVtFPYCVb19XWY=s16000" alt="Thumbnail for HR facts post" />
+      </div>
+      <div class="custom-post-content">
+        <h3 class="custom-post-title">
+          <a href="https://work-com-ge.blogspot.com/12-facts-hr-about.html">12 ფაქტი რომელიც ძალიან ცოტამ იცის HR-ების შესახებ (დამსაქმებლების შესახებ)</a>
+        </h3>
+        <p class="custom-post-snippet">
+          აღმოაჩინეთ მოულოდნელი და საინტერესო ფაქტები HR სპეციალისტებისა და დამსაქმებლების მუშაობის შესახებ...
+        </p>
+      </div>
+    </div>
+
+    <!-- Post 2: 11 შეცდომა რომელიც არასდროს უნდა დაუშვა სივის (CV) გაკეთებისას -->
+    <div class="custom-post-item">
+      <div class="custom-post-thumbnail">
+        <img src="https://blogger.googleusercontent.com/img/a/AVvXsEhs7cZGN6VVTn6kHZLbQDKNEZjsgtLnCvDsEC_mNsyOOV4BWvwyvvKTc04BeYl9-Vgt8lmBnd-kCMwjrcayI1UO-FupoqhIUdqdCQMZAgt8-WfSoZoa9lTslsTni4nXm5ORbJdKNWTdNxy9_6e9tDxuLyQyFKIzTECnvz4e2o52FccUvDS5HyDDf8ianMwT=s16000" alt="Thumbnail for CV mistakes post" />
+      </div>
+      <div class="custom-post-content">
+        <h3 class="custom-post-title">
+          <a href="https://work-com-ge.blogspot.com/11-mistakes-cv.html">11 შეცდომა რომელიც არასდროს უნდა დაუშვა სივის (CV) გაკეთებისას</a>
+        </h3>
+        <p class="custom-post-snippet">
+          თავიდან აიცილეთ გავრცელებული შეცდომები, რათა თქვენი CV იდეალურად გამოიყურებოდეს და გაზარდოთ წარმატების შანსები...
+        </p>
+      </div>
+    </div>
+
+    <!-- Post 3: მქონდეს თუ არა იმედი კარიერული ზრდის? -->
+    <div class="custom-post-item">
+      <div class="custom-post-thumbnail">
+        <img src="https://blogger.googleusercontent.com/img/a/AVvXsEgWMRYv1M0z60YMrxYTRMQbQlM8MS0XniuXHlfXMMc9iXouXA4Rp6vcyxlIndD_x_argu1BrPsbsNpiV8P0N7iRXBpqsVcXIaMi9FC3d1Logjd4a4Y4dS4ZIDPEWdqu4fvRu142Tl_w55DfZaGUWteHhgtefhFmlrVVhOTxPIt5lHf6EBnNKSNbIKGYYSF8=s16000" alt="Thumbnail for career growth post" />
+      </div>
+      <div class="custom-post-content">
+        <h3 class="custom-post-title">
+          <a href="https://work-com-ge.blogspot.com/career-growth-hope.html">მქონდეს თუ არა იმედი კარიერული ზრდის?</a>
+        </h3>
+        <p class="custom-post-snippet">
+          დაფიქრდით თქვენს კარიერულ მიზნებზე და გაიგეთ, რა ნაბიჯები უნდა გადადგათ წარმატების მისაღწევად...
+        </p>
+      </div>
+    </div>
+
+  </div>
+</div>]]></b:widget-setting>
+  </b:widget-settings>
+  <b:includable id='main'>
+  <!-- only display title if it's non-empty -->
+  <b:if cond='data:title != &quot;&quot;'>
+    <h2 class='title'><data:title/></h2>
+  </b:if>
+  <div class='widget-content'>
+    <data:content/>
+  </div>
+
+  <b:include name='quickedit'/>
+</b:includable>
+</b:widget>
+<b:widget id='PopularPosts1' locked='false' title='ახალი ✨' type='PopularPosts'>
+  <b:widget-settings>
+    <b:widget-setting name='numItemsToShow'>1</b:widget-setting>
     <b:widget-setting name='showThumbnails'>true</b:widget-setting>
     <b:widget-setting name='showSnippets'>true</b:widget-setting>
-    <b:widget-setting name='timeRange'>ALL_TIME</b:widget-setting>
+    <b:widget-setting name='timeRange'>LAST_WEEK</b:widget-setting>
   </b:widget-settings>
   <b:includable id='main'>
   <b:if cond='data:title != &quot;&quot;'><h2><data:title/></h2></b:if>
@@ -4159,7 +4785,7 @@ h2.search-title {    /* Another common pattern */
 </b:widget>
 <b:widget id='HTML2' locked='false' title='' type='HTML'>
   <b:widget-settings>
-    <b:widget-setting name='content'><![CDATA[<i class="fas fa-pencil-alt" style="font-size: 40px; color: #007bff;"></i>
+    <b:widget-setting name='content'><![CDATA[<i class="fas fa-pencil-alt" style="font-size: 40px; color: #343a40;"></i>
 <a href="https://forms.gle/1bRzkZF3MqVMuuDe9" target="_blank" class="styled-button">
     გაქვს ისტორია, რომელიც უნდა გაიგონ? გამოგვიგზავნე!
 </a>
@@ -4169,7 +4795,7 @@ h2.search-title {    /* Another common pattern */
 .styled-button {
     display: inline-block;
     padding: 12px 25px;
-    background-color: #007bff; /* General button color (a nice blue) */
+    background-color: #343a40; /* General button color (a nice blue) */
     color: #ffffff !important; /* Forces text color to white */
     text-decoration: none;
     border: none;
@@ -4184,7 +4810,7 @@ h2.search-title {    /* Another common pattern */
 
 /* Hover effect */
 .styled-button:hover {
-    background-color: #0056b3; /* Darker blue on hover */
+    background-color: #343a40; /* Darker blue on hover */
     transform: translateY(-2px);
     box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
 }
@@ -4295,13 +4921,11 @@ h2.search-title {    /* Another common pattern */
 <nav class='custom-mobile-menu' id='custom-menu'>
     <ul>
         <li><a href='https://work.com.ge/'>მთავარი</a></li>
-        <li><a href='https://work.com.ge/p/about-us.html'>ისტორიები</a></li>
-        <li><a href='https://work.com.ge/p/contact.html'>რჩევები</a></li>
-        <li><a href='https://work.com.ge/p/contact.html'>მითები</a></li>
-        <li><a href='https://work.com.ge/p/contact.html'>ფაქტები</a></li>
+        <li><a href='https://work.com.ge/p/about-us.html'>ჩვენს შესახებ</a></li>
+        <li><a href='https://work-com-ge.blogspot.com/p/contact.html'> კონტაქტი</a></li>
 
-    </ul>
-</nav>
+
+</ul></nav>
 
 <script>
     document.addEventListener('DOMContentLoaded', function() {
@@ -4335,48 +4959,18 @@ h2.search-title {    /* Another common pattern */
   <b:include name='quickedit'/>
 </b:includable>
 </b:widget>
-</b:section></div></div></div><div style='clear: both'/></div></div></div><div class='main-cap-bottom cap-bottom'><div class='cap-left'/><div class='cap-right'/></div></div></div></div><footer id='ttr_footer'><div id='ttr_footer_inner'><div id='ttr_footer_top_for_widgets'><div class='ttr_footer_top_for_widgets_inner'/></div><div class='ttr_footer_bottom_footer'><div class='footer-cap-top cap-top'><div class='cap-left'/><div class='cap-right'/></div><div class='fauxborder-left footer-fauxborder-left'><div class='fauxborder-right footer-fauxborder-right'/><div class='ttr_footer_bottom_footer_inner'><div class='ttr_footer_element_alignment container'/>
-   <div id='ttr_footer_designed_by_links'><a href='http://templatetoaster.com' target='_self'/><span id='ttr_footer_designed_by'/></div></div><div class='ttr_footer_bottom_footer_inner'>    <footer class='site-footer'>
-    <div class='footer-content'>
-        <p class='copyright-text'>&#169; 2025 Work.com.ge</p>
+</b:section></div></div></div><div style='clear: both'/></div></div></div><div class='main-cap-bottom cap-bottom'><div class='cap-left'/><div class='cap-right'/></div></div></div></div><footer id='ttr_footer'><div id='ttr_footer_inner'><div id='ttr_footer_top_for_widgets'><div class='ttr_footer_top_for_widgets_inner'/></div><div class='ttr_footer_bottom_footer'><div class='footer-cap-top cap-top'><div class='cap-left'/><div class='cap-right'/></div><div class='fauxborder-left footer-fauxborder-left'><div class='fauxborder-right footer-fauxborder-right'/><div class='ttr_footer_bottom_footer_inner'><!--add element- footer element-->                     
+                <div data-site-id='118246' id='top-ge-counter-container'/>
+                <script async='async' src='//counter.top.ge/counter.js'/>              
+        <div class='ttr_footer_element_alignment container'/>
+   <div id='ttr_footer_designed_by_links'><a href='http://work.com.ge' target='_self'/><span id='ttr_footer_designed_by'/></div></div><div class='ttr_footer_bottom_footer_inner'>    <footer class='site-footer'>
+  <div class='footer-content'>
+    <p class='copyright-text'>&#169; 2025 Work.com.ge</p>
+    <div class='footer-policy-links'>
+      <a class='policy-link' href='https://www.work.com.ge/p/privacy-policy.html'>კონფიდენციალურობის პოლიტიკა</a>
+      <span class='policy-link-separator'>|</span>
+      <a class='policy-link' href='https://www.work.com.ge/p/terms-and-conditions.html'>წესები და პირობები</a>
     </div>
-</footer><macro:include id='footer-sections' name='sections'><macro:param default='2' name='num'/><macro:param default='footer' name='idPrefix'/><macro:param default='foot' name='class'/><macro:param default='false' name='includeBottom'/></macro:include><b:section class='foot' id='footer-3' showaddelement='no'/></div></div><div class='footer-cap-bottom cap-bottom'><div class='cap-left'/><div class='cap-right'/></div><script type='text/javascript'>WebFontConfig = {google: { families: [ &#39;Open+Sans&#39;,&#39;Open+Sans:700&#39;,&#39;Open+Sans:600&#39;] }};(function() {var wf = document.createElement(&#39;script&#39;);wf.src = (&#39;https:&#39; == document.location.protocol ? &#39;https&#39; : &#39;http&#39;) + &#39;://ajax.googleapis.com/ajax/libs/webfont/1.0.31/webfont.js&#39;;wf.type = &#39;text/javascript&#39;;wf.async = &#39;true&#39;;var s = document.getElementsByTagName(&#39;script&#39;)[0];s.parentNode.insertBefore(wf, s);})();</script></div></div></footer><div style='height:0px;width:0px;overflow:hidden;-webkit-margin-top-collapse: separate;'/></div><div class='content-cap-bottom cap-bottom'><div class='cap-left'/><div class='cap-right'/></div></div></div><script type='text/javascript'>window.setTimeout(function() {document.body.className = document.body.className.replace(&#39;loading&#39;,&#39;&#39;); }, 100);</script><script type='text/javascript'>var postperpage=2;var numshowpage=2;var upPageWord =&#39;Prev&#39;;var downPageWord =&#39;Next&#39;;var urlactivepage=location.href;var home_page=&quot;/&quot;;</script><b:include data='blog' name='google-analytics'/></body><macro:includable id='sections' var='col'><macro:if cond='data:col.num == 0'><macro:else/><b:section mexpr:class='data:col.class' mexpr:id='data:col.idPrefix + &quot;-1&quot;' preferred='yes' showaddelement='yes'/><macro:if cond='data:col.num &gt;= 2'><table border='0' cellpadding='0' cellspacing='0' mexpr:class='&quot;section-columns columns-&quot; + data:col.num'><tbody><tr><td class='first columns-cell'><b:section mexpr:class='data:col.class' mexpr:id='data:col.idPrefix + &quot;-2-1&quot;'/></td><td class='columns-cell'><b:section mexpr:class='data:col.class' mexpr:id='data:col.idPrefix + &quot;-2-2&quot;'/></td><macro:if cond='data:col.num &gt;= 3'><td class='columns-cell'><b:section mexpr:class='data:col.class' mexpr:id='data:col.idPrefix + &quot;-2-3&quot;'/></td></macro:if><macro:if cond='data:col.num &gt;= 4'><td class='columns-cell'><b:section mexpr:class='data:col.class' mexpr:id='data:col.idPrefix + &quot;-2-4&quot;'/></td></macro:if></tr></tbody></table><macro:if cond='data:col.includeBottom'><b:section mexpr:class='data:col.class' mexpr:id='data:col.idPrefix + &quot;-3&quot;' showaddelement='no'/></macro:if></macro:if></macro:if></macro:includable><b:section-contents id='footer-1'>
-  <b:widget id='PageList2' locked='false' title='კონტაქტი' type='PageList'>
-    <b:widget-settings>
-      <b:widget-setting name='pageListJson'><![CDATA[{"0":{"href":"https://work-com-ge.blogspot.com/","position":2,"title":"Home"},"link0":{"href":"http://work-com-ge.blogspot.com/","position":0,"title":"Home"}}]]></b:widget-setting>
-      <b:widget-setting name='homeTitle'>Home</b:widget-setting>
-    </b:widget-settings>
-    <b:includable id='main'>
-  <b:if cond='data:title != &quot;&quot;'><h2><data:title/></h2></b:if>
-  <div class='widget-content'>
-    <b:if cond='data:mobile'>
-      <select expr:id='data:widget.instanceId + &quot;_select&quot;'>
-        <b:if cond='data:showPlaceholder'>
-          <option disabled='disabled' hidden='hidden' value=''>
-            <b:attr cond='!data:hasCurrentPage' name='selected' value='selected'/>
-            <b:message name='messages.moveToPage'/>
-          </option>
-        </b:if>
-        <b:loop values='data:links' var='link'>
-          <option expr:value='data:link.href'>
-            <b:attr cond='data:link.isCurrentPage' name='selected' value='selected'/>
-            <data:link.title/>
-          </option>
-        </b:loop>
-      </select>
-      <span class='pagelist-arrow'>&amp;#9660;</span>
-    <b:else/>
-      <ul>
-        <b:loop values='data:links' var='link'>
-          <li>
-            <b:class cond='data:link.isCurrentPage' name='selected'/>
-            <a expr:href='data:link.href'><data:link.title/></a>
-          </li>
-        </b:loop>
-      </ul>
-    </b:if>
-    <b:include name='quickedit'/>
   </div>
-</b:includable>
-  </b:widget>
-</b:section-contents><b:section-contents id='footer-2-1'/><b:section-contents id='footer-2-2'/></html>
+</footer><macro:include id='footer-sections' name='sections'><macro:param default='2' name='num'/><macro:param default='footer' name='idPrefix'/><macro:param default='foot' name='class'/><macro:param default='false' name='includeBottom'/></macro:include><b:section class='foot' id='footer-3' showaddelement='yes'/></div></div><div class='footer-cap-bottom cap-bottom'><div class='cap-left'/><div class='cap-right'/></div><script type='text/javascript'>WebFontConfig = {google: { families: [ &#39;Open+Sans&#39;,&#39;Open+Sans:700&#39;,&#39;Open+Sans:600&#39;] }};(function() {var wf = document.createElement(&#39;script&#39;);wf.src = (&#39;https:&#39; == document.location.protocol ? &#39;https&#39; : &#39;http&#39;) + &#39;://ajax.googleapis.com/ajax/libs/webfont/1.0.31/webfont.js&#39;;wf.type = &#39;text/javascript&#39;;wf.async = &#39;true&#39;;var s = document.getElementsByTagName(&#39;script&#39;)[0];s.parentNode.insertBefore(wf, s);})();</script></div></div></footer><div style='height:0px;width:0px;overflow:hidden;-webkit-margin-top-collapse: separate;'/></div><div class='content-cap-bottom cap-bottom'><div class='cap-left'/><div class='cap-right'/></div></div></div><script type='text/javascript'>window.setTimeout(function() {document.body.className = document.body.className.replace(&#39;loading&#39;,&#39;&#39;); }, 100);</script><script type='text/javascript'>var postperpage=2;var numshowpage=2;var upPageWord =&#39;Prev&#39;;var downPageWord =&#39;Next&#39;;var urlactivepage=location.href;var home_page=&quot;/&quot;;</script><b:include data='blog' name='google-analytics'/>
+</body><macro:includable id='sections' var='col'><macro:if cond='data:col.num == 0'><macro:else/><b:section mexpr:class='data:col.class' mexpr:id='data:col.idPrefix + &quot;-1&quot;' preferred='yes' showaddelement='yes'/><macro:if cond='data:col.num &gt;= 2'><table border='0' cellpadding='0' cellspacing='0' mexpr:class='&quot;section-columns columns-&quot; + data:col.num'><tbody><tr><td class='first columns-cell'><b:section mexpr:class='data:col.class' mexpr:id='data:col.idPrefix + &quot;-2-1&quot;'/></td><td class='columns-cell'><b:section mexpr:class='data:col.class' mexpr:id='data:col.idPrefix + &quot;-2-2&quot;'/></td><macro:if cond='data:col.num &gt;= 3'><td class='columns-cell'><b:section mexpr:class='data:col.class' mexpr:id='data:col.idPrefix + &quot;-2-3&quot;'/></td></macro:if><macro:if cond='data:col.num &gt;= 4'><td class='columns-cell'><b:section mexpr:class='data:col.class' mexpr:id='data:col.idPrefix + &quot;-2-4&quot;'/></td></macro:if></tr></tbody></table><macro:if cond='data:col.includeBottom'><b:section mexpr:class='data:col.class' mexpr:id='data:col.idPrefix + &quot;-3&quot;' showaddelement='yes'/></macro:if></macro:if></macro:if></macro:includable><b:section-contents id='footer-1'/><b:section-contents id='footer-2-1'/><b:section-contents id='footer-2-2'/></html>
